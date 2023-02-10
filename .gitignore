@@ -113,7 +113,6 @@ venv.bak/
 .mypy_cache/
 
 # Local configuration file
-config.py
 intermediabot.session
 
 # to store the downloaded files
