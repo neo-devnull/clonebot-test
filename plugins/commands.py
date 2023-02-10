@@ -8,7 +8,7 @@ from presets import Presets
 from pyrogram.types import Message
 from pyrogram.enums import ParseMode
 from pyrogram.errors import FloodWait
-from library.chat_support import find_msg_id, find_dc
+from library.chat_support import find_msg_id, find_dc, save_target_cfg
 from pyrogram import Client, filters, ContinuePropagation, StopPropagation
 from library.buttons import (reply_markup_start, reply_markup_home, reply_markup_close,
                              reply_markup_cap_cnf, reply_markup_terminate)
@@ -165,8 +165,13 @@ async def force_reply_msg(client: Bot, message: Message):
         except Exception:
             pass
         member = await client.USER.get_chat_member(chat_id, user_bot_me.id)
-        if str(chat_status.type) in ('supergroup' or 'group'):
-            if member.status != 'administrator':
+        if str(chat_status.type) in ('ChatType.SUPERGROUP' or 'ChatType.GROUP'):
+            member_status = str(member.status)
+            allowed_statuses = [
+                'ChatMemberStatus.ADMINISTRATOR',
+                'ChatMemberStatus.OWNER'
+            ]
+            if member_status not in allowed_statuses:
                 await client.delete_messages(message.chat.id, b)
                 await message.delete()
                 await bot_msg.edit(Presets.IN_CORRECT_PERMISSIONS_MESSAGE_DEST_POSTING)
@@ -176,6 +181,7 @@ async def force_reply_msg(client: Bot, message: Message):
             await client.delete_messages(message.chat.id, b)
             await message.delete()
             await target_cnf_db(id, chat_id)
+            await save_target_cfg(id, chat_id)
             await bot_msg.edit(Presets.DEST_CNF.format(
                 chat_status.title,
                 chat_id,
@@ -191,6 +197,7 @@ async def force_reply_msg(client: Bot, message: Message):
                 await client.delete_messages(message.chat.id, b)
                 await message.delete()
                 await target_cnf_db(id, chat_id)
+                await save_target_cfg(id, chat_id)
                 await bot_msg.edit(Presets.DEST_CNF.format(
                     chat_status.title,
                     chat_id,
