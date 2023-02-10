@@ -32,7 +32,6 @@ class Config(object):
 
     AUTH_USERS = get_config('AUTH_USERS', cast=str).split()
     AUTH_USERS = set(int(x) for x in AUTH_USERS)
-    print(AUTH_USERS)
     TG_USER_SESSION = get_config('TG_USER_SESSION', cast=str)
 
     DB_URI = get_config('DATABASE_URL', cast=str)
