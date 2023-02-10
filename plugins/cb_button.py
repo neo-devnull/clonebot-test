@@ -178,12 +178,11 @@ async def clone(client: Bot, cb: CallbackQuery):
         await cb.answer(Presets.NOT_CONFIGURED, True)
         return
     else:
-        if id in clone_btn_count:
-            try:
-                clone_btn_count.pop(id)
-                await index_target_chat(client, cb.message)
-            except Exception:
-                pass
+        try:
+            await index_target_chat(client, cb.message)
+        except Exception as e:
+            print(e)
+            pass
 
 
 @Client.on_callback_query(filters.regex(r'^index_skip_btn$'))
