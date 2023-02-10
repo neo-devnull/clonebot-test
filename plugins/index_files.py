@@ -6,7 +6,11 @@ from presets import Presets
 from pyrogram.types import Message
 from pyrogram.errors import FloodWait
 from plugins.clone import clone_medias
-from library.buttons import reply_markup_skip_index, reply_markup_purge, reply_markup_skip_purge
+from library.buttons import (
+    reply_markup_skip_index,
+    reply_markup_purge,
+    reply_markup_skip_purge,
+)
 from library.chat_support import calc_percentage, calc_progress, import_cfg_data
 
 msg_id_index = []
@@ -34,18 +38,28 @@ async def index_target_chat(client: Bot, message: Message):
     test_msg = await client.USER.send_message(target_chat, Presets.TEST_MSG)
     last_msg_id = int(test_msg.id) - 1
     await test_msg.delete()
-    await message.edit_text(Presets.INDEXING_MSG.format(init_msg_id, last_msg_id, len(msg_id_index)))
+    await message.edit_text(
+        Presets.INDEXING_MSG.format(init_msg_id, last_msg_id, len(msg_id_index))
+    )
     await asyncio.sleep(1)
-    msg2 = await message.reply_text(Presets.WAIT_MSG, reply_markup=reply_markup_skip_index)
+    msg2 = await message.reply_text(
+        Presets.WAIT_MSG, reply_markup=reply_markup_skip_index
+    )
     for offset in reversed(range(last_msg_id, 0, -1)):
-        async for user_message in client.USER.get_chat_history(chat_id=target_chat, offset_id=offset, limit=1):
-            messages = await client.USER.get_messages(target_chat, user_message.id, replies=0)
+        async for user_message in client.USER.get_chat_history(
+            chat_id=target_chat, offset_id=offset, limit=1
+        ):
+            messages = await client.USER.get_messages(
+                target_chat, user_message.id, replies=0
+            )
             new_msg_id = messages.id
             if id not in index_skip_key:
                 if msg_id_index:
                     await msg2.delete()
-                    await message.edit_text(Presets.PURGE_PROMPT.format(len(msg_id_index)),
-                                            reply_markup=reply_markup_purge)
+                    await message.edit_text(
+                        Presets.PURGE_PROMPT.format(len(msg_id_index)),
+                        reply_markup=reply_markup_purge,
+                    )
                 else:
                     await msg2.delete()
                     await clone_medias(client, message)
@@ -61,16 +75,20 @@ async def index_target_chat(client: Bot, message: Message):
                         else:
                             msg_id_index.append(int(messages.id))
                         try:
-                            await message.edit_text(Presets.INDEXING_MSG.format(new_msg_id,
-                                                                                last_msg_id,
-                                                                                len(msg_id_index)))
+                            await message.edit_text(
+                                Presets.INDEXING_MSG.format(
+                                    new_msg_id, last_msg_id, len(msg_id_index)
+                                )
+                            )
                         except FloodWait as e:
                             await asyncio.sleep(e.value)
                         except Exception:
                             pass
                         progress = await calc_progress(pct)
                         try:
-                            await msg2.edit(progress, reply_markup=reply_markup_skip_index)
+                            await msg2.edit(
+                                progress, reply_markup=reply_markup_skip_index
+                            )
                         except FloodWait as e:
                             await asyncio.sleep(e.value)
                         except Exception:
@@ -80,7 +98,9 @@ async def index_target_chat(client: Bot, message: Message):
     if msg_id_index:
         await msg2.delete()
         await message.edit_text(
-            Presets.PURGE_PROMPT.format(len(msg_id_index)), reply_markup=reply_markup_purge)
+            Presets.PURGE_PROMPT.format(len(msg_id_index)),
+            reply_markup=reply_markup_purge,
+        )
     else:
         await msg2.delete()
         await clone_medias(client, message)
@@ -94,7 +114,9 @@ async def purge_media(client: Bot, message: Message):
     target_chat = int(query.d_chat)
     await message.edit_text(Presets.PROCESSING_PURGE.format(int(), msg_id_index[-1]))
     await asyncio.sleep(1)
-    msg2 = await message.reply_text(Presets.WAIT_MSG, reply_markup=reply_markup_skip_purge)
+    msg2 = await message.reply_text(
+        Presets.WAIT_MSG, reply_markup=reply_markup_skip_purge
+    )
     for i in msg_id_index:
         if id not in purge_skip_key:
             await msg2.delete()

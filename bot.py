@@ -21,9 +21,7 @@ class Bot(Client):
             bot_token=Config.TG_BOT_TOKEN,
             sleep_threshold=30,
             workers=8,
-            plugins={
-                "root": "plugins"
-            }
+            plugins={"root": "plugins"},
         )
         self.LOGGER = LOGGER
 
@@ -31,13 +29,10 @@ class Bot(Client):
         await super().start()
         usr_bot_me = await self.get_me()
         self.set_parse_mode(ParseMode.HTML)
-        self.LOGGER(__name__).info(
-            f"@{usr_bot_me.username}  started! "
-        )
+        self.LOGGER(__name__).info(f"@{usr_bot_me.username}  started! ")
         self.USER, self.USER_ID = await User().start()
         try:
-            await self.USER.send_message(usr_bot_me.username,
-                                         "%session_start%")
+            await self.USER.send_message(usr_bot_me.username, "%session_start%")
         except Exception as e:
             print(str(e))
             print(Msg.BOT_BLOCKED_MSG)

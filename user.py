@@ -20,9 +20,7 @@ class User(Client):
         await super().start()
         usr_bot_me = await self.get_me()
         self.set_parse_mode(ParseMode.HTML)
-        self.LOGGER(__name__).info(
-            f"@{usr_bot_me.username}  started!"
-        )
+        self.LOGGER(__name__).info(f"@{usr_bot_me.username}  started!")
         # self.add_handler(clone_media_handler)
         return self, usr_bot_me.id
 

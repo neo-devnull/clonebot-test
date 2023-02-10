@@ -18,7 +18,7 @@ else:
     from config import Config
 
 
-@Client.on_callback_query(filters.regex(r'^start_btn$'))
+@Client.on_callback_query(filters.regex(r"^start_btn$"))
 async def start_settings(client: Bot, cb: CallbackQuery):
     id = int(cb.from_user.id)
     if Config.AUTH_USERS and (id not in Config.AUTH_USERS):
@@ -27,15 +27,16 @@ async def start_settings(client: Bot, cb: CallbackQuery):
     await add_user(id)
     await cb.answer()
     try:
-        await cb.message.edit_text(Presets.WELCOME_TEXT,
-                                   reply_markup=reply_markup_home,
-                                   parse_mode=ParseMode.MARKDOWN
-                                   )
+        await cb.message.edit_text(
+            Presets.WELCOME_TEXT,
+            reply_markup=reply_markup_home,
+            parse_mode=ParseMode.MARKDOWN,
+        )
     except Exception:
         pass
 
 
-@Client.on_callback_query(filters.regex(r'^view_btn$'))
+@Client.on_callback_query(filters.regex(r"^view_btn$"))
 async def view_chat_config(client: Bot, cb: CallbackQuery):
     id = int(cb.from_user.id)
     query = await query_msg(id)
@@ -55,17 +56,20 @@ async def view_chat_config(client: Bot, cb: CallbackQuery):
         captn = "Default Caption"
     else:
         captn = "No Caption"
-    await cb.answer(text=Presets.VIEW_CONF.format(
-        a if bool(query.s_chat) else "❎",
-        b if bool(query.d_chat) else "❎",
-        c if bool(query.from_id) else "1",
-        d if bool(query.to_id) else "❎",
-        "✅" if e is True else "❎",
-        captn
-    ), show_alert=True)
+    await cb.answer(
+        text=Presets.VIEW_CONF.format(
+            a if bool(query.s_chat) else "❎",
+            b if bool(query.d_chat) else "❎",
+            c if bool(query.from_id) else "1",
+            d if bool(query.to_id) else "❎",
+            "✅" if e is True else "❎",
+            captn,
+        ),
+        show_alert=True,
+    )
 
 
-@Client.on_callback_query(filters.regex(r'^delay_btn$'))
+@Client.on_callback_query(filters.regex(r"^delay_btn$"))
 async def delayed_clone(client: Bot, cb: CallbackQuery):
     id = int(cb.from_user.id)
     query = await query_msg(id)
@@ -78,7 +82,7 @@ async def delayed_clone(client: Bot, cb: CallbackQuery):
         await cb.answer(Presets.DELAY_ON, True)
 
 
-@Client.on_callback_query(filters.regex(r'^caption_btn$'))
+@Client.on_callback_query(filters.regex(r"^caption_btn$"))
 async def file_caption(client: Bot, cb: CallbackQuery):
     id = int(cb.from_user.id)
     query = await query_msg(id)
@@ -95,7 +99,7 @@ async def file_caption(client: Bot, cb: CallbackQuery):
             await cb.answer(Presets.CAPTION_ON, True)
 
 
-@Client.on_callback_query(filters.regex(r'^f_caption_btn$'))
+@Client.on_callback_query(filters.regex(r"^f_caption_btn$"))
 async def file_name_caption(client: Bot, cb: CallbackQuery):
     id = int(cb.from_user.id)
     query = await query_msg(id)
@@ -112,27 +116,29 @@ async def file_name_caption(client: Bot, cb: CallbackQuery):
             await cb.answer(Presets.FN_AS_CAPT_ON, True)
 
 
-@Client.on_callback_query(filters.regex(r'^view_types$'))
+@Client.on_callback_query(filters.regex(r"^view_types$"))
 async def view_file_types(client: Bot, cb: CallbackQuery):
-    await cb.answer(Presets.SELECTED_TYPE.format("🟡" if "document" in file_types else "🚫",
-                                                 "🟡" if "audio" in file_types else "🚫",
-                                                 "🟡" if "video" in file_types else "🚫",
-                                                 "🟡" if "photo" in file_types else "🚫",
-                                                 "🟡" if "voice" in file_types else "🚫",
-                                                 "🟡" if "text" in file_types else "🚫",
-                                                 ),
-                    True
-                    )
+    await cb.answer(
+        Presets.SELECTED_TYPE.format(
+            "🟡" if "document" in file_types else "🚫",
+            "🟡" if "audio" in file_types else "🚫",
+            "🟡" if "video" in file_types else "🚫",
+            "🟡" if "photo" in file_types else "🚫",
+            "🟡" if "voice" in file_types else "🚫",
+            "🟡" if "text" in file_types else "🚫",
+        ),
+        True,
+    )
 
 
-@Client.on_callback_query(filters.regex(r'^terminate_btn$'))
+@Client.on_callback_query(filters.regex(r"^terminate_btn$"))
 async def terminate_bot(client: Bot, cb: CallbackQuery):
     await cb.answer(Presets.TERMINATED_MSG, True)
     await cb.message.delete()
     sys.exit()
 
 
-@Client.on_callback_query(filters.regex(r'^clear_btn$'))
+@Client.on_callback_query(filters.regex(r"^clear_btn$"))
 async def clear_button(client: Bot, cb: CallbackQuery):
     try:
         if cb.message.reply_markup:
@@ -141,12 +147,12 @@ async def clear_button(client: Bot, cb: CallbackQuery):
         pass
 
 
-@Client.on_callback_query(filters.regex(r'^close_btn$'))
+@Client.on_callback_query(filters.regex(r"^close_btn$"))
 async def close(client: Bot, cb: CallbackQuery):
     await cb.message.delete()
 
 
-@Client.on_callback_query(filters.regex(r'^rst_btn$'))
+@Client.on_callback_query(filters.regex(r"^rst_btn$"))
 async def reset_settings(client: Bot, cb: CallbackQuery):
     file_types.clear()
     id = int(cb.from_user.id)
@@ -157,7 +163,7 @@ async def reset_settings(client: Bot, cb: CallbackQuery):
     await update_type_buttons()
 
 
-@Client.on_callback_query(filters.regex(r'^stop_clone$'))
+@Client.on_callback_query(filters.regex(r"^stop_clone$"))
 async def stop_process(client: Bot, cb: CallbackQuery):
     id = int(cb.from_user.id)
     try:
@@ -168,13 +174,13 @@ async def stop_process(client: Bot, cb: CallbackQuery):
 
 
 # Call back function for clone: Random button clicks avoided
-@Client.on_callback_query(filters.regex(r'^clone_btn$'))
+@Client.on_callback_query(filters.regex(r"^clone_btn$"))
 async def clone(client: Bot, cb: CallbackQuery):
     id = int(cb.from_user.id)
     query = await query_msg(id)
     msg_a = int(query.s_chat)
     msg_b = int(query.d_chat)
-    if str(msg_a).startswith('0') or str(msg_b).startswith("0"):
+    if str(msg_a).startswith("0") or str(msg_b).startswith("0"):
         await cb.answer(Presets.NOT_CONFIGURED, True)
         return
     else:
@@ -185,7 +191,7 @@ async def clone(client: Bot, cb: CallbackQuery):
             pass
 
 
-@Client.on_callback_query(filters.regex(r'^index_skip_btn$'))
+@Client.on_callback_query(filters.regex(r"^index_skip_btn$"))
 async def skip_indexing(client: Bot, cb: CallbackQuery):
     id = int(cb.from_user.id)
     try:
@@ -194,7 +200,7 @@ async def skip_indexing(client: Bot, cb: CallbackQuery):
         pass
 
 
-@Client.on_callback_query(filters.regex(r'^purge_skip_btn$'))
+@Client.on_callback_query(filters.regex(r"^purge_skip_btn$"))
 async def skip_purging(client: Bot, cb: CallbackQuery):
     id = int(cb.from_user.id)
     try:
@@ -203,17 +209,17 @@ async def skip_purging(client: Bot, cb: CallbackQuery):
         pass
 
 
-@Client.on_callback_query(filters.regex(r'^purge_no_btn$'))
+@Client.on_callback_query(filters.regex(r"^purge_no_btn$"))
 async def purge_no(client: Bot, cb: CallbackQuery):
     await clone_medias(client, cb.message)
 
 
-@Client.on_callback_query(filters.regex(r'^purge_yes_btn$'))
+@Client.on_callback_query(filters.regex(r"^purge_yes_btn$"))
 async def purge_yes(client: Bot, cb: CallbackQuery):
     await purge_media(client, cb.message)
 
 
-@Client.on_callback_query(filters.regex(r'^restart_btn$'))
+@Client.on_callback_query(filters.regex(r"^restart_btn$"))
 async def restart_bot(client: Bot, cb: CallbackQuery):
     session = await client.USER.get_me()
     if cb.from_user.id == int(session.id):
@@ -224,7 +230,7 @@ async def restart_bot(client: Bot, cb: CallbackQuery):
         await cb.answer(Presets.RESTART_MSG_ERROR, True)
 
 
-@Client.on_callback_query(filters.regex(r'^cust_captn_btn$'))
+@Client.on_callback_query(filters.regex(r"^cust_captn_btn$"))
 async def set_custom_caption(client: Bot, cb: CallbackQuery):
     id = int(cb.from_user.id)
     if id not in custom_caption:
@@ -234,7 +240,7 @@ async def set_custom_caption(client: Bot, cb: CallbackQuery):
         custom_caption.pop(id)
 
 
-@Client.on_callback_query(filters.regex(r'^capt_cnf_yes_btn$'))
+@Client.on_callback_query(filters.regex(r"^capt_cnf_yes_btn$"))
 async def caption_yes_button(client: Bot, cb: CallbackQuery):
     id = int(cb.from_user.id)
     caption_text = str(cb.message.reply_to_message.text.html)
@@ -244,7 +250,8 @@ async def caption_yes_button(client: Bot, cb: CallbackQuery):
         await cb.message.reply_to_message.delete()
         await cb.message.delete()
 
-@Client.on_callback_query(filters.regex(r'^capt_cnf_no_btn$'))
+
+@Client.on_callback_query(filters.regex(r"^capt_cnf_no_btn$"))
 async def caption_no_button(client: Bot, cb: CallbackQuery):
     await cb.message.reply_to_message.delete()
     await cb.message.delete()

@@ -1,8 +1,10 @@
 # ----------------------------------- https://github.com/m4mallu/clonebot --------------------------------------------#
 class Presets(object):
-    START_TEXT = "𝙃𝙚𝙡𝙡𝙤... {}\n𝐼 𝑐𝑎𝑛 𝑐𝑙𝑜𝑛𝑒 𝑚𝑒𝑑𝑖𝑎 𝑓𝑟𝑜𝑚 𝑎𝑛𝑦 𝑐ℎ𝑎𝑡 𝑡𝑜 𝑦𝑜𝑢𝑟 " \
-                 "𝑝𝑒𝑟𝑠𝑜𝑛𝑎𝑙 𝑐ℎ𝑎𝑡 ! 𝐶𝑙𝑖𝑐𝑘 𝑠𝑒𝑡𝑡𝑖𝑛𝑔𝑠 𝑡𝑜 𝑐𝑜𝑛𝑓𝑖𝑔𝑢𝑟𝑒 𝑚𝑒. 𝐼𝑓 𝑦𝑜𝑢 " \
-                 "𝑙𝑖𝑘𝑒 𝑚𝑒, 𝑝𝑙𝑒𝑎𝑠𝑒 𝑔𝑖𝑣𝑒 𝑎 𝑠𝑡𝑎𝑟 𝑖𝑛 𝑚𝑎 𝐺𝑖𝑡𝐻𝑢𝑏 𝑟𝑒𝑝𝑜. 𝑇ℎ𝑎𝑛𝑘𝑠 "
+    START_TEXT = (
+        "𝙃𝙚𝙡𝙡𝙤... {}\n𝐼 𝑐𝑎𝑛 𝑐𝑙𝑜𝑛𝑒 𝑚𝑒𝑑𝑖𝑎 𝑓𝑟𝑜𝑚 𝑎𝑛𝑦 𝑐ℎ𝑎𝑡 𝑡𝑜 𝑦𝑜𝑢𝑟 "
+        "𝑝𝑒𝑟𝑠𝑜𝑛𝑎𝑙 𝑐ℎ𝑎𝑡 ! 𝐶𝑙𝑖𝑐𝑘 𝑠𝑒𝑡𝑡𝑖𝑛𝑔𝑠 𝑡𝑜 𝑐𝑜𝑛𝑓𝑖𝑔𝑢𝑟𝑒 𝑚𝑒. 𝐼𝑓 𝑦𝑜𝑢 "
+        "𝑙𝑖𝑘𝑒 𝑚𝑒, 𝑝𝑙𝑒𝑎𝑠𝑒 𝑔𝑖𝑣𝑒 𝑎 𝑠𝑡𝑎𝑟 𝑖𝑛 𝑚𝑎 𝐺𝑖𝑡𝐻𝑢𝑏 𝑟𝑒𝑝𝑜. 𝑇ℎ𝑎𝑛𝑘𝑠 "
+    )
     WELCOME_TEXT = "⭑⭑★✪ HELP for more info: ✪★⭑⭑"
     MESSAGE_COUNT = """
 ╭──────⌈ 📥 Cloning ⌋──────╮<code>
@@ -52,9 +54,13 @@ You have selected:
 𝐅𝐫𝐨𝐦 𝐦𝐬𝐠 𝐈𝐝 : {} | 𝐓𝐨 𝐦𝐬𝐠 𝐈𝐝 : {}
 𝐃𝐞𝐥𝐚𝐲𝐞𝐝 : {} | 𝐂𝐚𝐩𝐭𝐢𝐨𝐧 : {}"""
     FILE_TYPES = ["document", "video", "audio", "voice", "photo", "text"]
-    COPIED_MESSAGES = "<b><a href='https://github.com/m4mallu/clonebot'>Medias Copied</a></b>"
-    IN_CORRECT_PERMISSIONS_MESSAGE_DEST_POSTING = "A̶c̶c̶e̶s̶s̶ ̶D̶e̶n̶i̶e̶d̶\n\n𝘜𝘴𝘦𝘳 𝘪𝘴 𝘯𝘰𝘵 𝘢𝘯 𝘢𝘥𝘮𝘪𝘯 𝘰𝘳 𝘥𝘰𝘦𝘴𝘯'𝘵 𝘩𝘢𝘷𝘦\n" \
-                                                  "𝘱𝘰𝘴𝘵𝘪𝘯𝘨 𝘱𝘳𝘪𝘷𝘪𝘭𝘢𝘨𝘦𝘴 𝘪𝘯 𝘵𝘩𝘦 𝘨𝘪𝘷𝘦𝘯 𝘤𝘩𝘢𝘵"
+    COPIED_MESSAGES = (
+        "<b><a href='https://github.com/m4mallu/clonebot'>Medias Copied</a></b>"
+    )
+    IN_CORRECT_PERMISSIONS_MESSAGE_DEST_POSTING = (
+        "A̶c̶c̶e̶s̶s̶ ̶D̶e̶n̶i̶e̶d̶\n\n𝘜𝘴𝘦𝘳 𝘪𝘴 𝘯𝘰𝘵 𝘢𝘯 𝘢𝘥𝘮𝘪𝘯 𝘰𝘳 𝘥𝘰𝘦𝘴𝘯'𝘵 𝘩𝘢𝘷𝘦\n"
+        "𝘱𝘰𝘴𝘵𝘪𝘯𝘨 𝘱𝘳𝘪𝘷𝘪𝘭𝘢𝘨𝘦𝘴 𝘪𝘯 𝘵𝘩𝘦 𝘨𝘪𝘷𝘦𝘯 𝘤𝘩𝘢𝘵"
+    )
     USER_ABSENT_MSG = "𝙎𝙚𝙨𝙨𝙞𝙤𝙣 𝙪𝙨𝙚𝙧 𝙞𝙨 𝙣𝙤𝙩 𝙞𝙣 𝙩𝙝𝙚 𝙩𝙖𝙧𝙜𝙚𝙩 𝙘𝙝𝙖𝙩 𝙜𝙞𝙫𝙚𝙣"
     CANCEL_CLONE = "𝙎𝙩𝙤𝙥𝙥𝙞𝙣𝙜 𝙩𝙝𝙚 𝙥𝙧𝙤𝙘𝙚𝙨𝙨... 𝙋𝙡𝙯 𝙬𝙖𝙞𝙩 🕚"
     CANCELLED_MSG = "⚠      𝙐𝙨𝙚𝙧 𝙘𝙖𝙣𝙘𝙚𝙡𝙡𝙚𝙙 𝙘𝙡𝙤𝙣𝙞𝙣𝙜      ⚠"
@@ -122,8 +128,10 @@ H̶e̶r̶o̶k̶u̶ f̶r̶e̶e̶ d̶y̶n̶o̶s̶ r̶e̶s̶t̶a̶r̶t̶s̶ .
     FINISHED_TEXT = "𝘾𝙡𝙤𝙣𝙚  𝙘𝙤𝙢𝙥𝙡𝙚𝙩𝙚𝙙 𝙨𝙪𝙘𝙘𝙚𝙨𝙨𝙛𝙪𝙡𝙡𝙮  ✅"
     TERMINATED_MSG = "🚫 𝘽𝙤𝙩 𝙏𝙚𝙧𝙢𝙞𝙣𝙖𝙩𝙚𝙙 🚫\n𝘍𝘦𝘦𝘭𝘴 𝘴𝘰𝘮𝘦𝘵𝘩𝘪𝘯𝘨 𝘧𝘪𝘴𝘩𝘺? 𝘉𝘭𝘰𝘤𝘬 𝘵𝘩𝘪𝘴 𝘣𝘰𝘵 𝘵𝘰 𝘢𝘷𝘰𝘪𝘥 𝘵𝘩𝘦 𝘶𝘴𝘢𝘨𝘦 𝘰𝘧 𝘺𝘰𝘶𝘳 𝘴𝘦𝘴𝘴𝘪𝘰𝘯 𝘢𝘨𝘢𝘪𝘯 !"
     COPY_ERROR = "𝙎𝙤𝙢𝙚𝙩𝙝𝙞𝙣𝙜 𝙬𝙚𝙣𝙩 𝙬𝙧𝙤𝙣𝙜 !\n\n𝘊𝘰𝘱𝘺𝘪𝘯𝘨 𝘢𝘣𝘰𝘳𝘵𝘦𝘥 𝘣𝘺 𝘵𝘩𝘦 𝘴𝘺𝘴𝘵𝘦𝘮\n𝘊𝘩𝘦𝘤𝘬 𝘢𝘭𝘭 𝘵𝘩𝘦 𝘶𝘴𝘦𝘳 𝘱𝘦𝘳𝘮𝘪𝘴𝘴𝘪𝘰𝘯𝘴."
-    INVALID_CHAT_ID = "<u>𝙄𝙣𝙫𝙖𝙡𝙞𝙙 𝙘𝙝𝙖𝙩 𝙥𝙖𝙧𝙖𝙢𝙚𝙩𝙚𝙧 𝙛𝙤𝙪𝙣𝙙</u>\n\n𝐂𝐚𝐮𝐬𝐞𝐬:\n1. 𝘚𝘦𝘴𝘴𝘪𝘰𝘯 𝘶𝘴𝘦𝘳 𝘯𝘰𝘵 𝘪𝘯 𝘗𝘳𝘪𝘷𝘢𝘵𝘦 𝘤𝘩𝘢𝘵\n" \
-                      "2. 𝘍𝘰𝘳 𝘱𝘶𝘣𝘭𝘪𝘤 𝘤𝘩𝘢𝘵𝘴, 𝘶𝘴𝘦 '@𝘶𝘴𝘦𝘳𝘯𝘢𝘮𝘦'\n𝘰𝘳 𝘭𝘪𝘯𝘬 𝘪𝘯𝘴𝘵𝘦𝘢𝘥 𝘰𝘧 '𝘪𝘥'"
+    INVALID_CHAT_ID = (
+        "<u>𝙄𝙣𝙫𝙖𝙡𝙞𝙙 𝙘𝙝𝙖𝙩 𝙥𝙖𝙧𝙖𝙢𝙚𝙩𝙚𝙧 𝙛𝙤𝙪𝙣𝙙</u>\n\n𝐂𝐚𝐮𝐬𝐞𝐬:\n1. 𝘚𝘦𝘴𝘴𝘪𝘰𝘯 𝘶𝘴𝘦𝘳 𝘯𝘰𝘵 𝘪𝘯 𝘗𝘳𝘪𝘷𝘢𝘵𝘦 𝘤𝘩𝘢𝘵\n"
+        "2. 𝘍𝘰𝘳 𝘱𝘶𝘣𝘭𝘪𝘤 𝘤𝘩𝘢𝘵𝘴, 𝘶𝘴𝘦 '@𝘶𝘴𝘦𝘳𝘯𝘢𝘮𝘦'\n𝘰𝘳 𝘭𝘪𝘯𝘬 𝘪𝘯𝘴𝘵𝘦𝘢𝘥 𝘰𝘧 '𝘪𝘥'"
+    )
     ASK_SOURCE = "𝙂𝙞𝙫𝙚 𝙩𝙝𝙚 𝙨𝙤𝙪𝙧𝙘𝙚 𝙘𝙝𝙖𝙩 𝙞𝙣𝙛𝙤:\n𝑌𝑜𝑢 ℎ𝑎𝑣𝑒 30𝑆𝑒𝑐 𝑡𝑜 𝑑𝑜 𝑡ℎ𝑖𝑠.."
     ASK_DESTINATION = "𝙂𝙞𝙫𝙚 𝙩𝙝𝙚 𝘿𝙚𝙨𝙩𝙞𝙣𝙖𝙩𝙞𝙤𝙣 𝙘𝙝𝙖𝙩 𝙞𝙣𝙛𝙤:\n𝑌𝑜𝑢 ℎ𝑎𝑣𝑒 30𝑆𝑒𝑐 𝑡𝑜 𝑑𝑜 𝑡ℎ𝑖𝑠.."
     ASK_START_MSG_ID = "𝙂𝙞𝙫𝙚 𝙩𝙝𝙚 𝙨𝙩𝙖𝙧𝙩𝙞𝙣𝙜 𝙢𝙚𝙨𝙨𝙖𝙜𝙚 𝙄𝙙:\n𝑌𝑜𝑢 ℎ𝑎𝑣𝑒 30𝑆𝑒𝑐 𝑡𝑜 𝑑𝑜 𝑡ℎ𝑖𝑠.."
@@ -161,9 +169,13 @@ H̶e̶r̶o̶k̶u̶ f̶r̶e̶e̶ d̶y̶n̶o̶s̶ r̶e̶s̶t̶a̶r̶t̶s̶ .
     SELECT_TYPE = "👉 𝙎𝙚𝙡𝙚𝙘𝙩𝙞𝙤𝙣 𝙬𝙞𝙡𝙡 𝙗𝙚 𝙩𝙤𝙜𝙜𝙡𝙚𝙙 𝙤𝙣 𝙩𝙖𝙥\n𝘈𝘭𝘭 𝘢𝘳𝘦 𝘴𝘦𝘭𝘦𝘤𝘵𝘦𝘥 𝘣𝘺 𝘥𝘦𝘧𝘢𝘶𝘭𝘵 !"
     CLONE_REPORT_CAPTION = "<b>Clone Report</b>"
     PURGE_PROMPT = "👉 <b>{}</b>  👈 <i>Duplicate files found in your target chat. Do you wish to purge it now ?</i>"
-    PROCESSING_PURGE = "<b>🔷Now@: {}        🔷End@: {}</b>\n\n<i>𝐏𝐫𝐨𝐜𝐞𝐬𝐬𝐢𝐧𝐠.. Please Wait</i>"
-    TARGET_CFG_LOAD_MSG = "<b><u>Imported</u>  ✅</b>\n\n<code>An index of the given target chat found in my database. " \
-                          "It has been loaded to my memory.</code>\n\n<b><i>Proceeding to clone..</i></b>"
+    PROCESSING_PURGE = (
+        "<b>🔷Now@: {}        🔷End@: {}</b>\n\n<i>𝐏𝐫𝐨𝐜𝐞𝐬𝐬𝐢𝐧𝐠.. Please Wait</i>"
+    )
+    TARGET_CFG_LOAD_MSG = (
+        "<b><u>Imported</u>  ✅</b>\n\n<code>An index of the given target chat found in my database. "
+        "It has been loaded to my memory.</code>\n\n<b><i>Proceeding to clone..</i></b>"
+    )
     CLONE_REPORT = """
 🔰 <b>Report on cloning</b> 🔰
 
@@ -191,6 +203,8 @@ Ended at Id   - {}
 
 <u><b>Credits:</u></b> https://github.com/m4mallu
 """
-    GET_CHAT_ID_MSG = "<b>You have been forwaded a message\nfrom a chat having the id:</b>\n\n<code>{" \
-                      "}</code>\n<b>Message Id: </b><code>{}</code>\n\n<i>Tap the above text to copy !</i> "
+    GET_CHAT_ID_MSG = (
+        "<b>You have been forwaded a message\nfrom a chat having the id:</b>\n\n<code>{"
+        "}</code>\n<b>Message Id: </b><code>{}</code>\n\n<i>Tap the above text to copy !</i> "
+    )
     CLONE_REPORT_INFO = "A report has been generted in your SAVED MESSAGES folder. Thanks for using this bot 🤝"
