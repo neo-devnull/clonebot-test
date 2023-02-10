@@ -12,14 +12,12 @@ logging.basicConfig(
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 
-def get_config(key, cast=None):
+def get_config(key, cast=str):
     try:
         val = os.environ[key]
     except KeyError:
         exit(f'Please define {key} as part of env vars')
 
-    if not cast:
-        return val
     try:
         return cast(val)
     except ValueError:
@@ -30,12 +28,12 @@ class Config(object):
     TG_BOT_TOKEN = get_config('TG_BOT_TOKEN')
 
     API_ID = get_config('API_ID', cast=int)
-    API_HASH = get_config('API_HASH')
+    API_HASH = get_config('API_HASH', cast=str)
 
-    AUTH_USERS = get_config('AUTH_USERS')
+    AUTH_USERS = get_config('AUTH_USERS', cast=str).split()
     AUTH_USERS = set(int(x) for x in AUTH_USERS)
-
-    TG_USER_SESSION = get_config('TG_USER_SESSION')
+    print(AUTH_USERS)
+    TG_USER_SESSION = get_config('TG_USER_SESSION', cast=str)
 
     DB_URI = get_config('DATABASE_URL', cast=str)
 
